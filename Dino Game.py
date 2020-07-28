@@ -211,14 +211,16 @@ def gamestarts(high_score):
             back_velocity = 0
             walkpoint = 0
             flypoint = 0
+            bowpoint = 0
             game = False
             gameover = True
 
         # for tree1
-        if (treex + 400 < drax + 50 < treex + 400 +10) and (treey < dray + 50 < treey + 60):
+        if (treex + 400 < drax + 50 < treex + 400 + 10) and (treey < dray + 50 < treey + 60):
             back_velocity = 0
             walkpoint = 0
             flypoint = 0
+            bowpoint = 0
             game = False
             gameover = True
 
@@ -227,6 +229,7 @@ def gamestarts(high_score):
             back_velocity = 0
             walkpoint = 0
             flypoint = 0
+            bowpoint = 0
             game = False
             gameover = True
 
@@ -235,6 +238,7 @@ def gamestarts(high_score):
             back_velocity = 0
             walkpoint = 0
             flypoint = 0
+            bowpoint = 0
             game = False
             gameover = True
 
@@ -243,6 +247,7 @@ def gamestarts(high_score):
             back_velocity = 0
             walkpoint = 0
             flypoint = 0
+            bowpoint = 0
             game = False
             gameover = True
 
@@ -251,6 +256,7 @@ def gamestarts(high_score):
             back_velocity = 0
             walkpoint = 0
             flypoint = 0
+            bowpoint = 0
             game = False
             gameover = True
 
@@ -260,6 +266,7 @@ def gamestarts(high_score):
                 back_velocity = 0
                 walkpoint = 0
                 flypoint = 0
+                bowpoint = 0
                 game = False
                 gameover = True
 
@@ -268,6 +275,7 @@ def gamestarts(high_score):
             back_velocity = 0
             walkpoint = 0
             flypoint = 0
+            bowpoint = 0
             game = False
             gameover = True
 
@@ -276,6 +284,7 @@ def gamestarts(high_score):
             back_velocity = 0
             walkpoint = 0
             flypoint = 0
+            bowpoint = 0
             game = False
             gameover = True
 
