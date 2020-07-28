@@ -87,6 +87,7 @@ def gamestarts(high_score):
     flypoint = 0  # index of diff. image of bird
     bowpoint = 0  # index of diff. image of dragon of bow
     firepoint = 0  # index of diff. image of fire
+    zombiespoint = 0  # index of diff. image of zombie
     gravity = 5  # amount of up-down
     score = 0  # initial score
 
@@ -142,6 +143,12 @@ def gamestarts(high_score):
         fire2 = pygame.image.load("fire2.jpg")  # import fire2
         fire2 = pygame.transform.scale(fire2, (50, 50))  # Scale fire2
 
+        # Zombies
+        Zombie1 = pygame.image.load("z1.jpg")  # import Zombie1
+        Zombie1 = pygame.transform.scale(Zombie1, (50, 90))  # Scale Zombie1
+        Zombie2 = pygame.image.load("z2.jpg")  # import Zombie2
+        Zombie2 = pygame.transform.scale(Zombie2, (70, 90))  # Scale Zombie2
+
         # Background
         background = pygame.image.load("background.png")  # import background
 
@@ -174,6 +181,12 @@ def gamestarts(high_score):
         fire_list = [fire1, fire1, fire1, fire1, fire1, fire1,
                      fire2, fire2, fire2, fire2, fire2, fire2 ]
 
+        # Zombie1
+        zombie_list = [Zombie1, Zombie1, Zombie1, Zombie1,
+                       Zombie1, Zombie1, Zombie1, Zombie1,
+                       Zombie2, Zombie2, Zombie2, Zombie2,
+                       Zombie2, Zombie2, Zombie2, Zombie2,]
+
         # Main starting of event
         for event in pygame.event.get():
             # From the total event taking place abstract some to mach with our use
@@ -202,7 +215,7 @@ def gamestarts(high_score):
         if backx == -600:
             backx = 0
         # obstacles
-        if treex < -3000:
+        if treex < -3400:
             treex = 550
 
         # Rules for collision & stop
@@ -288,6 +301,15 @@ def gamestarts(high_score):
             game = False
             gameover = True
 
+        # For zombies
+        if (treex + 3400 < drax + 50 < treex + 3400 + 50) and (treey < dray + 50 < treey + 90):
+            back_velocity = 0
+            walkpoint = 0
+            flypoint = 0
+            bowpoint = 0
+            game = False
+            gameover = True
+
         # Score counting
         if game == True:
             score += 1
@@ -303,7 +325,8 @@ def gamestarts(high_score):
 
         # increasing velocity
         if game == True:
-            in_velocity += 0.2
+            if score % 2000 == 0 :
+                in_velocity += 1
 
         # Velocity
         backx -= back_velocity  # To move background
@@ -376,6 +399,12 @@ def gamestarts(high_score):
             if firepoint > 11:
                 firepoint = 0
 
+        # Zompie
+        if game == True:
+            zombiespoint += 1
+            if zombiespoint > 11:
+                zombiespoint = 0
+
         # Information Screen
         if score == 0:
             screen.blit(text3, [200, 150])
@@ -402,7 +431,10 @@ def gamestarts(high_score):
             screen.blit(bird_fly[flypoint], [treex + 2400, treey - 25]),
 
             # Fire
-            screen.blit(fire_list[firepoint], [treex + 3000, treey])]  # List of position of Obstacles
+            screen.blit(fire_list[firepoint], [treex + 3000, treey]),
+
+
+            screen.blit(zombie_list[zombiespoint], [treex + 3400, treey -35])]  # List of position of Obstacles
 
         # Call obstacles
         for i in range(len(Position_Obstacles)):
