@@ -8,8 +8,8 @@
 
 # Make the Dragon jump or bow.
 # So that it won't get hit with obstacles.
-# Game starts with basic information and initial score high score as '0'.
-# It gets updated automatical as we reach hich score
+# Game starts with basic information and initial score and high score as '0'.
+# It gets updated automaticaly as we reach hich score
 # After games get over, it can be again started with new high score
 
 # import pygame
@@ -39,14 +39,26 @@ font3 = pygame.font.Font("freesansbold.ttf", 40)  # font type3
 # colours
 #           R   G   B
 sky_blue = (170, 255, 255)  # Sky_blue
-black =    (0, 0, 0)  # Black
-red =      (255, 0, 0)  # Red
-blue =     (0, 0, 255)  # Blue
-dark_blue =(0, 0, 128)  # Dark Blue
+black =    (  0,   0,   0)  # Black
+red =      (255,   0,   0)  # Red
+blue =     (  0,   0, 255)  # Blue
+dark_blue =(  0,   0, 128)  # Dark Blue
+
+# Sound effect dictionary
+GAME_SOUNDS = {}
+# Value of GAME_SOUNDS
+GAME_SOUNDS["Dino_die"] = pygame.mixer.Sound('C:\\Users\\admin\\PycharmProjects\\Dino game\\Dino_die.wav')   # Check again
+GAME_SOUNDS["Dino_jump"] = pygame.mixer.Sound('C:\\Users\\admin\\PycharmProjects\\Dino game\\Dino_jump.wav')
+GAME_SOUNDS["CheckPoint"] = pygame.mixer.Sound('C:\\Users\\admin\\PycharmProjects\\Dino game\\CheckPoint.wav')
+
+# Background_music
+music = pygame.mixer.music.load("C:\\Users\\admin\\PycharmProjects\\Dino game\\Background music_Warm Light.mp3")
 
 # Real game loop to start game
 def gamestarts(high_score):
 
+    # Play background music
+    pygame.mixer.music.play(-1)
     def Find_High_Score(score_got):  # Function for Find_High_Score
         High_Score.append(score_got)  # Appending new scores into it
         for i in range(0, len(High_Score)):  # Performing insertion sorting
@@ -91,6 +103,9 @@ def gamestarts(high_score):
     gravity = 5  # amount of up-down
     score = 0  # initial score
 
+    # Sound effect point
+    GAME_SOUNDS_Dino_die = 0
+
     # Boolean variable
     game = False  # Boolean for starting point for diff img & make dino move
     jump = False  # Boolean to start jumping
@@ -98,6 +113,9 @@ def gamestarts(high_score):
     bow = False  # Boolean to bow
 
     while True:
+
+        # Sound Effect point
+        GAME_SOUNDS_CheckPoint = 0
 
         # image requried in this loop
 
@@ -221,98 +239,147 @@ def gamestarts(high_score):
         # Rules for collision & stop
         # for tree
         if (treex < drax + 50 < treex + 70) and (treey < dray + 50 < treey + 50):
-            back_velocity = 0
-            walkpoint = 0
-            flypoint = 0
-            bowpoint = 0
+            back_velocity = 0  # Background will stop
+            walkpoint = 0  # Dino won't walk
+            flypoint = 0  # Bird won't fly
+            bowpoint = 0  # Dino won't bow
             game = False
-            gameover = True
+            gameover = True  # Game will gets over
+            for i in range(1):  # Sound effect - Dino Die
+                GAME_SOUNDS_Dino_die += 1
+                if GAME_SOUNDS_Dino_die <= 2:
+                    GAME_SOUNDS["Dino_die"].play()
+
 
         # for tree1
         if (treex + 400 < drax + 50 < treex + 400 + 10) and (treey < dray + 50 < treey + 60):
-            back_velocity = 0
-            walkpoint = 0
-            flypoint = 0
-            bowpoint = 0
+            back_velocity = 0  # Background will stop
+            walkpoint = 0  # Dino won't walk
+            flypoint = 0  # Bird won't fly
+            bowpoint = 0  # Dino won't bow
             game = False
-            gameover = True
+            gameover = True  # Game will gets over
+            for i in range(1):  # Sound effect - Dino Die
+                GAME_SOUNDS_Dino_die += 1
+                if GAME_SOUNDS_Dino_die <= 2:
+                    GAME_SOUNDS["Dino_die"].play()
 
         # for tree2
         if (treex + 800 < drax + 50 < treex + 800 + 90) and (treey - 8 < dray + 50 < treey - 8 + 60):
-            back_velocity = 0
-            walkpoint = 0
-            flypoint = 0
-            bowpoint = 0
+            back_velocity = 0  # Background will stop
+            walkpoint = 0  # Dino won't walk
+            flypoint = 0  # Bird won't fly
+            bowpoint = 0  # Dino won't bow
             game = False
-            gameover = True
+            gameover = True  # Game will gets over
+            for i in range(1):  # Sound effect - Dino Die
+                GAME_SOUNDS_Dino_die += 1
+                if GAME_SOUNDS_Dino_die <= 2:
+                    GAME_SOUNDS["Dino_die"].play()
 
         # for tree3
         if (treex + 1200 < drax + 50 < treex + 1200 + 45) and (treey - 8 < dray + 50 < treey - 8 + 60):
-            back_velocity = 0
-            walkpoint = 0
-            flypoint = 0
-            bowpoint = 0
+            back_velocity = 0  # Background will stop
+            walkpoint = 0  # Dino won't walk
+            flypoint = 0  # Bird won't fly
+            bowpoint = 0  # Dino won't bow
             game = False
-            gameover = True
+            gameover = True  # Game will gets over
+            for i in range(1):  # Sound effect - Dino Die
+                GAME_SOUNDS_Dino_die += 1
+                if GAME_SOUNDS_Dino_die <= 2:
+                    GAME_SOUNDS["Dino_die"].play()
 
         # for tree4
         if (treex + 1600 < drax + 50 < treex + 1600 + 75) and (treey - 2 < dray + 50 < treey - 2 + 60):
-            back_velocity = 0
-            walkpoint = 0
-            flypoint = 0
-            bowpoint = 0
+            back_velocity = 0  # Background will stop
+            walkpoint = 0  # Dino won't walk
+            flypoint = 0  # Bird won't fly
+            bowpoint = 0  # Dino won't bow
             game = False
-            gameover = True
+            gameover = True  # Game will gets over
+            for i in range(1):  # Sound effect - Dino Die
+                GAME_SOUNDS_Dino_die += 1
+                if GAME_SOUNDS_Dino_die <= 2:
+                    GAME_SOUNDS["Dino_die"].play()
 
         # for bird ground level
         if (treex + 2000 < drax + 50 < treex + 2000 + 50) and (treey < dray + 50 < treey + 50):
-            back_velocity = 0
-            walkpoint = 0
-            flypoint = 0
-            bowpoint = 0
+            back_velocity = 0  # Background will stop
+            walkpoint = 0  # Dino won't walk
+            flypoint = 0  # Bird won't fly
+            bowpoint = 0  # Dino won't bow
             game = False
-            gameover = True
+            gameover = True  # Game will gets over
+            for i in range(1):  # Sound effect - Dino Die
+                GAME_SOUNDS_Dino_die += 1
+                if GAME_SOUNDS_Dino_die <= 2:
+                    GAME_SOUNDS["Dino_die"].play()
 
         # for bird sky level
         if bow == False:
             if (treex + 2400 < drax + 50 < treex + 2400 + 50) and (treey - 25 < dray + 50 < treey - 5 + 50):
-                back_velocity = 0
-                walkpoint = 0
-                flypoint = 0
-                bowpoint = 0
+                back_velocity = 0  # Background will stop
+                walkpoint = 0  # Dino won't walk
+                flypoint = 0  # Bird won't fly
+                bowpoint = 0  # Dino won't bow
                 game = False
-                gameover = True
+                gameover = True  # Game will gets over
+                for i in range(1):  # Sound effect - Dino Die
+                    GAME_SOUNDS_Dino_die += 1
+                    if GAME_SOUNDS_Dino_die <= 2:
+                        GAME_SOUNDS["Dino_die"].play()
 
         # for bird ground level from bow
         if (treex + 3000 < drax + 50 < treex + 3000 + 50) and (treey < dray + 50 < treey + 50):
-            back_velocity = 0
-            walkpoint = 0
-            flypoint = 0
-            bowpoint = 0
+            back_velocity = 0  # Background will stop
+            walkpoint = 0  # Dino won't walk
+            flypoint = 0  # Bird won't fly
+            bowpoint = 0  # Dino won't bow
             game = False
-            gameover = True
+            gameover = True  # Game will gets over
+            for i in range(1):  # Sound effect - Dino Die
+                GAME_SOUNDS_Dino_die += 1
+                if GAME_SOUNDS_Dino_die <= 2:
+                    GAME_SOUNDS["Dino_die"].play()
 
         # for fire
         if (treex + 3400 < drax + 50 < treex + 3400 + 50) and (treey < dray + 50 < treey + 50):
-            back_velocity = 0
-            walkpoint = 0
-            flypoint = 0
-            bowpoint = 0
+            back_velocity = 0  # Background will stop
+            walkpoint = 0  # Dino won't walk
+            flypoint = 0  # Bird won't fly
+            bowpoint = 0  # Dino won't bow
             game = False
-            gameover = True
+            gameover = True  # Game will gets over
+            for i in range(1):  # Sound effect - Dino Die
+                GAME_SOUNDS_Dino_die += 1
+                if GAME_SOUNDS_Dino_die <= 2:
+                    GAME_SOUNDS["Dino_die"].play()
 
         # For zombies
         if (treex + 3400 < drax + 50 < treex + 3400 + 50) and (treey < dray + 50 < treey + 90):
-            back_velocity = 0
-            walkpoint = 0
-            flypoint = 0
-            bowpoint = 0
+            back_velocity = 0  # Background will stop
+            walkpoint = 0  # Dino won't walk
+            flypoint = 0  # Bird won't fly
+            bowpoint = 0  # Dino won't bow
             game = False
-            gameover = True
+            gameover = True  # Game will gets over
+            for i in range(1):  # Sound effect - Dino Die
+                GAME_SOUNDS_Dino_die += 1
+                if GAME_SOUNDS_Dino_die <= 2:
+                    GAME_SOUNDS["Dino_die"].play()
 
         # Score counting
         if game == True:
             score += 1
+
+        # Score count checking
+        if game == True:
+            if score % 1000 == 0:
+                for i in range(1):  # Sound effect - Dino Score Count checking
+                    GAME_SOUNDS_CheckPoint += 1
+                    if GAME_SOUNDS_CheckPoint <= 3:
+                        GAME_SOUNDS["CheckPoint"].play()
 
         # Text formating
 
@@ -360,8 +427,11 @@ def gamestarts(high_score):
         # Jump
         if 276 > dray > 125:
             if jump == True:
+                if dray >= 265:
+                    GAME_SOUNDS["Dino_jump"].play()
                 dray -= gravity
                 screen.blit(walk[walkpoint], [drax, dray])
+
         else:
             jump = False
             screen.blit(walk[walkpoint], [drax, dray])
@@ -433,7 +503,7 @@ def gamestarts(high_score):
             # Fire
             screen.blit(fire_list[firepoint], [treex + 3000, treey]),
 
-
+            # Zombie
             screen.blit(zombie_list[zombiespoint], [treex + 3400, treey -35])]  # List of position of Obstacles
 
         # Call obstacles
