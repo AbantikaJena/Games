@@ -52,7 +52,7 @@ GAME_SOUNDS["Dino_jump"] = pygame.mixer.Sound('C:\\Users\\admin\\PycharmProjects
 GAME_SOUNDS["CheckPoint"] = pygame.mixer.Sound('C:\\Users\\admin\\PycharmProjects\\Dino game\\CheckPoint.wav')
 
 # Background_music
-music = pygame.mixer.music.load("C:\\Users\\admin\\PycharmProjects\\Dino game\\Background music_Warm Light.mp3")
+music = pygame.mixer.music.load("C:\\Users\\admin\\PycharmProjects\\Dino game\\Background music_Warm Light.wav")
 
 # Real game loop to start game
 def gamestarts(high_score):
@@ -186,6 +186,7 @@ def gamestarts(high_score):
                 dragon2, dragon2, dragon2, dragon2,
                 dragon3, dragon3, dragon3, dragon3, dragon3, dragon3, dragon3, dragon3,
                 dragon5, dragon5, dragon5, dragon5, dragon5, dragon5, dragon5, dragon5,
+                dragon4, dragon4, dragon4, dragon4, dragon4, dragon4, dragon4, dragon4,
                 dragon4, dragon4, dragon4, dragon4, dragon4, dragon4, dragon4, dragon4]
         # Bow
         bow_list = [dragon_down1, dragon_down1, dragon_down1, dragon_down1, dragon_down1, dragon_down1,
@@ -454,7 +455,7 @@ def gamestarts(high_score):
                 screen.blit(walk[walkpoint], [drax, dray])
                 if game == True :
                     walkpoint += 1
-                    if walkpoint > 15:
+                    if walkpoint > 39:
                         walkpoint = 0
 
         # Moving birds wings
