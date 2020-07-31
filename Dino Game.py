@@ -1,4 +1,3 @@
-
 # CBSE Class 12
 # Computer Science Project
 # Student Name - Abantika Jena
@@ -39,26 +38,28 @@ font3 = pygame.font.Font("freesansbold.ttf", 40)  # font type3
 # colours
 #           R   G   B
 sky_blue = (170, 255, 255)  # Sky_blue
-black =    (  0,   0,   0)  # Black
-red =      (255,   0,   0)  # Red
-blue =     (  0,   0, 255)  # Blue
-dark_blue =(  0,   0, 128)  # Dark Blue
+black = (0, 0, 0)  # Black
+red = (255, 0, 0)  # Red
+blue = (0, 0, 255)  # Blue
+dark_blue = (0, 0, 128)  # Dark Blue
 
 # Sound effect dictionary
 GAME_SOUNDS = {}
 # Value of GAME_SOUNDS
-GAME_SOUNDS["Dino_die"] = pygame.mixer.Sound('C:\\Users\\admin\\PycharmProjects\\Dino game\\Dino_die.wav')   # Check again
+GAME_SOUNDS["Dino_die"] = pygame.mixer.Sound(
+    'C:\\Users\\admin\\PycharmProjects\\Dino game\\Dino_die.wav')  # Check again
 GAME_SOUNDS["Dino_jump"] = pygame.mixer.Sound('C:\\Users\\admin\\PycharmProjects\\Dino game\\Dino_jump.wav')
 GAME_SOUNDS["CheckPoint"] = pygame.mixer.Sound('C:\\Users\\admin\\PycharmProjects\\Dino game\\CheckPoint.wav')
 
 # Background_music
 music = pygame.mixer.music.load("C:\\Users\\admin\\PycharmProjects\\Dino game\\Background music_Warm Light.wav")
 
+
 # Real game loop to start game
 def gamestarts(high_score):
-
     # Play background music
     pygame.mixer.music.play(-1)
+
     def Find_High_Score(score_got):  # Function for Find_High_Score
         High_Score.append(score_got)  # Appending new scores into it
         for i in range(0, len(High_Score)):  # Performing insertion sorting
@@ -94,7 +95,7 @@ def gamestarts(high_score):
     in_velocity = 0  # initial increase in velocity
     back_velocity = 0  # velocity of background
 
-    #index of diff. image
+    # index of diff. image
     walkpoint = 0  # index of diff. image of dragon of walking
     flypoint = 0  # index of diff. image of bird
     bowpoint = 0  # index of diff. image of dragon of bow
@@ -163,7 +164,7 @@ def gamestarts(high_score):
 
         # Zombies
         Zombie1 = pygame.image.load("z1.jpg")  # import Zombie1
-        Zombie1 = pygame.transform.scale(Zombie1, (50, 90))  # Scale Zombie1
+        Zombie1 = pygame.transform.scale(Zombie1, (70, 90))  # Scale Zombie1
         Zombie2 = pygame.image.load("z2.jpg")  # import Zombie2
         Zombie2 = pygame.transform.scale(Zombie2, (70, 90))  # Scale Zombie2
 
@@ -193,24 +194,22 @@ def gamestarts(high_score):
                     dragon_down2, dragon_down2, dragon_down2, dragon_down2, dragon_down2, dragon_down2, ]
 
         # Bird
-        bird_fly = [bird_up, bird_up, bird_up, bird_up, bird_up,bird_up, bird_up, bird_up,
-                   bird_down, bird_down, bird_down, bird_down, bird_down, bird_down]
+        bird_fly = [bird_up, bird_up, bird_up, bird_up, bird_up, bird_up, bird_up, bird_up,
+                    bird_down, bird_down, bird_down, bird_down, bird_down, bird_down]
 
         # Fire
         fire_list = [fire1, fire1, fire1, fire1, fire1, fire1,
-                     fire2, fire2, fire2, fire2, fire2, fire2 ]
+                     fire2, fire2, fire2, fire2, fire2, fire2]
 
         # Zombie1
-        zombie_list = [Zombie1, Zombie1, Zombie1, Zombie1,
-                       Zombie1, Zombie1, Zombie1, Zombie1,
-                       Zombie2, Zombie2, Zombie2, Zombie2,
-                       Zombie2, Zombie2, Zombie2, Zombie2,]
+        zombie_list = [Zombie1, Zombie1, Zombie1, Zombie1, Zombie1, Zombie1, Zombie1, Zombie1,
+                       Zombie1, Zombie1, Zombie1, Zombie1, Zombie1, Zombie1, Zombie1, Zombie1,
+                       Zombie2, Zombie2, Zombie2, Zombie2, Zombie2, Zombie2, Zombie2, Zombie2,
+                       Zombie2, Zombie2, Zombie2, Zombie2, Zombie2, Zombie2, Zombie2, Zombie2]
 
         # Main starting of event
         for event in pygame.event.get():
             # From the total event taking place abstract some to mach with our use
-            if event.type == QUIT:  # To make the screen stay till not quit
-                pygame.quit()  # Quite the Screen
             if event.type == KEYDOWN:  # When any key is pressed
                 if event.key == K_UP:  # To start the movement when called
                     # Loop activate when up key is pressed
@@ -228,6 +227,8 @@ def gamestarts(high_score):
                         bow = True
                         jump = False
                         game = True
+            if event.type == QUIT:  # To make the screen stay till not quit
+                pygame.quit()  # Quite the Screen
 
         # To restart
         # background
@@ -250,7 +251,6 @@ def gamestarts(high_score):
                 GAME_SOUNDS_Dino_die += 1
                 if GAME_SOUNDS_Dino_die <= 2:
                     GAME_SOUNDS["Dino_die"].play()
-
 
         # for tree1
         if (treex + 400 < drax + 50 < treex + 400 + 10) and (treey < dray + 50 < treey + 60):
@@ -358,7 +358,7 @@ def gamestarts(high_score):
                     GAME_SOUNDS["Dino_die"].play()
 
         # For zombies
-        if (treex + 3400 < drax + 50 < treex + 3400 + 50) and (treey < dray + 50 < treey + 90):
+        if (treex + 3400 < drax + 50 < treex + 3400 + 70) and (treey < dray + 50 < treey + 90):
             back_velocity = 0  # Background will stop
             walkpoint = 0  # Dino won't walk
             flypoint = 0  # Bird won't fly
@@ -385,15 +385,15 @@ def gamestarts(high_score):
         # Text formating
 
         text = font1.render("Score : " + str(score), True, black)  # Score
-        text1 = font1.render("Game Over", True, red )  # Game Over
+        text1 = font1.render("Game Over", True, red)  # Game Over
         text2 = font.render("Press Space To Continue", True, black)  # Press Space To Continue
-        text3 = font3.render(" To Strat ", True, dark_blue) # To start
+        text3 = font3.render(" To Strat ", True, dark_blue)  # To start
         text4 = font2.render(" Press Up Button ", True, blue)  # Press Up Button
         text_high_score = font1.render(" High Score : " + str(Find_High_Score(score)), True, black)  # High Score
 
         # increasing velocity
         if game == True:
-            if score % 2000 == 0 :
+            if score % 2000 == 0:
                 in_velocity += 1
 
         # Velocity
@@ -402,25 +402,25 @@ def gamestarts(high_score):
 
         # Front Screen
         Front_Screen = [
-        # act as a gap filler of Screen
-        screen.fill(sky_blue),
-        # to insert background and the index of background
-        screen.blit(background, [backx, backy]),
-        # To add another background to the previous one
-        screen.blit(background, [backx + 600, backy]),
-        # Sun on screen
-        screen.blit(sun, [sunx, suny]),
-        # Score showing on screen
-        screen.blit(text, [300, 100]),
-        # High Score showing on screen
-        screen.blit(text_high_score, [300, 50]) ]  # List of Front Screen
+            # act as a gap filler of Screen
+            screen.fill(sky_blue),
+            # to insert background and the index of background
+            screen.blit(background, [backx, backy]),
+            # To add another background to the previous one
+            screen.blit(background, [backx + 600, backy]),
+            # Sun on screen
+            screen.blit(sun, [sunx, suny]),
+            # Score showing on screen
+            screen.blit(text, [300, 100]),
+            # High Score showing on screen
+            screen.blit(text_high_score, [300, 50])]  # List of Front Screen
 
         # Call Front_Screen
         for i in range(len(Front_Screen)):
             Front_Screen[i]
 
         # Screen when games get over
-        if gameover == True :
+        if gameover == True:
             screen.blit(text1, [225, 150])  # Game Over
             screen.blit(text2, [175, 180])  # Press Space To Continue
             screen.blit(gameover_restart, [250, 210])  # Replay image
@@ -453,19 +453,19 @@ def gamestarts(high_score):
                         bowpoint = 0
             else:
                 screen.blit(walk[walkpoint], [drax, dray])
-                if game == True :
+                if game == True:
                     walkpoint += 1
                     if walkpoint > 39:
                         walkpoint = 0
 
         # Moving birds wings
-        if game == True :
+        if game == True:
             flypoint += 1
             if flypoint > 11:
                 flypoint = 0
 
         # Burning Fire
-        if game == True :
+        if game == True:
             firepoint += 1
             if firepoint > 11:
                 firepoint = 0
@@ -473,7 +473,7 @@ def gamestarts(high_score):
         # Zompie
         if game == True:
             zombiespoint += 1
-            if zombiespoint > 11:
+            if zombiespoint > 31:
                 zombiespoint = 0
 
         # Information Screen
@@ -482,7 +482,7 @@ def gamestarts(high_score):
             screen.blit(text4, [150, 210])
 
         # Position of Obstacles
-        Position_Obstacles =[
+        Position_Obstacles = [
             # Tree position
             # for tree
             screen.blit(tree, [treex, treey]),
@@ -505,7 +505,7 @@ def gamestarts(high_score):
             screen.blit(fire_list[firepoint], [treex + 3000, treey]),
 
             # Zombie
-            screen.blit(zombie_list[zombiespoint], [treex + 3400, treey -35])]  # List of position of Obstacles
+            screen.blit(zombie_list[zombiespoint], [treex + 3400, treey - 35])]  # List of position of Obstacles
 
         # Call obstacles
         for i in range(len(Position_Obstacles)):
@@ -515,3 +515,5 @@ def gamestarts(high_score):
         pygame.display.update()  # update te entry
 
 gamestarts(high_score)
+pygame.quit()
+quit()
