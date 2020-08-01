@@ -12,14 +12,14 @@
 # After games get over, it can be again started with new high score
 
 # import pygame
-
 import pygame
 from pygame.locals import *
 
 # module initialized
 pygame.init()
 
-# variables
+# Variables required outside the def gamestart
+
 # Highest Score
 score = 0  # score calculating
 High_Score = [-1]  # List of scores
@@ -46,17 +46,15 @@ dark_blue = (0, 0, 128)  # Dark Blue
 # Sound effect dictionary
 GAME_SOUNDS = {}
 # Value of GAME_SOUNDS
-GAME_SOUNDS["Dino_die"] = pygame.mixer.Sound(
-    'C:\\Users\\admin\\PycharmProjects\\Dino game\\Dino_die.wav')  # Check again
-GAME_SOUNDS["Dino_jump"] = pygame.mixer.Sound('C:\\Users\\admin\\PycharmProjects\\Dino game\\Dino_jump.wav')
-GAME_SOUNDS["CheckPoint"] = pygame.mixer.Sound('C:\\Users\\admin\\PycharmProjects\\Dino game\\CheckPoint.wav')
+GAME_SOUNDS["Dino_die"] = pygame.mixer.Sound('C:\\Users\\admin\\PycharmProjects\\Dino game\\Dino_die.wav')  # Die
+GAME_SOUNDS["Dino_jump"] = pygame.mixer.Sound('C:\\Users\\admin\\PycharmProjects\\Dino game\\Dino_jump.wav')  # Jump
+GAME_SOUNDS["CheckPoint"] = pygame.mixer.Sound('C:\\Users\\admin\\PycharmProjects\\Dino game\\CheckPoint.wav')  # Score Check
 
 # Background_music
-music = pygame.mixer.music.load("C:\\Users\\admin\\PycharmProjects\\Dino game\\Background music_Warm Light.wav")
-
+music = pygame.mixer.music.load("C:\\Users\\admin\\PycharmProjects\\Dino game\\Background music_Warm Light.wav")  # Background
 
 # Real game loop to start game
-def gamestarts(high_score):
+def gamestarts():
     # Play background music
     pygame.mixer.music.play(-1)
 
@@ -73,7 +71,7 @@ def gamestarts(high_score):
         highest_score = High_Score[-1]
         return highest_score  # Return the output of function Find_High_Score
 
-    # variables in function Find_High_Score
+    # Variables required in  def gamestarts
 
     # co-ordinate of background
     backx = 0  # x co-ordinate of background
@@ -179,7 +177,7 @@ def gamestarts(high_score):
         gameover_restart = pygame.image.load("gameover.png")  # import gameover_reply
         gameover_restart = pygame.transform.scale(gameover_restart, (40, 40))  # scale gameover_reply
 
-        # list of different posture
+        # List of different posture
 
         # Dragon
         # Walk
@@ -195,7 +193,7 @@ def gamestarts(high_score):
 
         # Bird
         bird_fly = [bird_up, bird_up, bird_up, bird_up, bird_up, bird_up, bird_up, bird_up,
-                    bird_down, bird_down, bird_down, bird_down, bird_down, bird_down]
+                    bird_down, bird_down, bird_down, bird_down, bird_down, bird_down, bird_down, bird_down]
 
         # Fire
         fire_list = [fire1, fire1, fire1, fire1, fire1, fire1,
@@ -220,7 +218,7 @@ def gamestarts(high_score):
                         bow = False
                 if event.key == K_SPACE:  # To restart the game but with same high score
                     # Loop activate when spacebar key is pressed
-                    gamestarts(score)
+                    gamestarts()
                 if event.key == K_DOWN:  # To bow by Dino
                     # Loop activate when down key is pressed
                     if dray == 275:
@@ -345,7 +343,7 @@ def gamestarts(high_score):
                     GAME_SOUNDS["Dino_die"].play()
 
         # for fire
-        if (treex + 3400 < drax + 50 < treex + 3400 + 50) and (treey < dray + 50 < treey + 50):
+        if (treex + 3000 < drax + 50 < treex + 3000 + 50) and (treey < dray + 50 < treey + 50):
             back_velocity = 0  # Background will stop
             walkpoint = 0  # Dino won't walk
             flypoint = 0  # Bird won't fly
@@ -383,7 +381,6 @@ def gamestarts(high_score):
                         GAME_SOUNDS["CheckPoint"].play()
 
         # Text formating
-
         text = font1.render("Score : " + str(score), True, black)  # Score
         text1 = font1.render("Game Over", True, red)  # Game Over
         text2 = font.render("Press Space To Continue", True, black)  # Press Space To Continue
@@ -432,7 +429,6 @@ def gamestarts(high_score):
                     GAME_SOUNDS["Dino_jump"].play()
                 dray -= gravity
                 screen.blit(walk[walkpoint], [drax, dray])
-
         else:
             jump = False
             screen.blit(walk[walkpoint], [drax, dray])
@@ -461,7 +457,7 @@ def gamestarts(high_score):
         # Moving birds wings
         if game == True:
             flypoint += 1
-            if flypoint > 11:
+            if flypoint > 15:
                 flypoint = 0
 
         # Burning Fire
@@ -514,6 +510,6 @@ def gamestarts(high_score):
         # Update every entry
         pygame.display.update()  # update te entry
 
-gamestarts(high_score)
+gamestarts()
 pygame.quit()
 quit()
